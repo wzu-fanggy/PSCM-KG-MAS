@@ -1,9 +1,15 @@
+import os
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 from neo4j import GraphDatabase
 
 # 连接配置
 uri = "bolt://localhost:7687"
 username = "neo4j"
-password = "wr20021218"
+password = os.environ.get("NEO4J_PASSWORD", "")
 
 # 创建驱动
 driver = GraphDatabase.driver(uri, auth=(username, password))

@@ -12,7 +12,7 @@ DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 
 NEO4J_URI = "bolt://localhost:7687"
 NEO4J_USER = "neo4j"
-NEO4J_PASSWORD = "wr20021218"
+NEO4J_PASSWORD = os.environ.get("NEO4J_PASSWORD", "")
 
 # 所有 LLM 调用的输出上限。必须显式设置：
 # DeepSeek 系列模型会先输出推理内容，预算不足时正文会被截断成空字符串。

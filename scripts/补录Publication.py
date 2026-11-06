@@ -1,9 +1,16 @@
 import json
+import os
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 from neo4j import GraphDatabase
 
 URI = "bolt://localhost:7687"
 USER = "neo4j"
-PASS = "wr20021218"
+PASS = os.environ.get("NEO4J_PASSWORD", "")
 
 with open('C:/Users/20155/dpa4_project/data/parsed/filtered_papers.json', encoding='utf-8') as f:
     data = json.load(f)

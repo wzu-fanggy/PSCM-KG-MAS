@@ -1,9 +1,15 @@
+import os
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 from neo4j import GraphDatabase
 
 # ===== 配置（改成你自己的） =====
 URI = "bolt://localhost:7687"
 USERNAME = "neo4j"
-PASSWORD = "wr20021218"  #
+PASSWORD = os.environ.get("NEO4J_PASSWORD", "")  #
 
 # ===== 测试连接 =====
 def test_connection():

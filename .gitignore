@@ -11,3 +11,5 @@ venv/
 output/
 data/
 *.pdf
+# 本地凭证备份，不入库
+_bak_credentials_*/

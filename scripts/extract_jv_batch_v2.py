@@ -14,7 +14,7 @@ except ImportError:
 dashscope.api_key = os.environ["DASHSCOPE_API_KEY"]
 NEO4J_URI = "bolt://localhost:7687"
 NEO4J_USER = "neo4j"
-NEO4J_PASSWORD = "wr20021218"
+NEO4J_PASSWORD = os.environ.get("NEO4J_PASSWORD", "")
 
 PDF_DIR = Path(r"C:\Users\20155\dpa4_project\data\pdfs")
 INTERSECTION_FILE = Path(r"C:\Users\20155\dpa4_project\data\intersection_dois.txt")

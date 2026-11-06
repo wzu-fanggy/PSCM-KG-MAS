@@ -4,11 +4,18 @@
 """
 
 import re, json, time, os, subprocess, sys
+import os
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 from pathlib import Path
 from urllib.parse import urljoin
 
 # ===== 配置 =====
-COOKIE_STRING = 'SERVERID=Server1; SID="USW2EC0BEBSsRruG8zhuWYdF5gwTD"; _webvpn_key=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiMjU0NTA5MzYwMjIiLCJncm91cHMiOlsyM10sImlhdCI6MTc4NDUyNjIwMywiZXhwIjoxNzg0NjEyNjAzfQ.1AK3g5yG8XgdO5jRdAABqzqDqXG9OVDgdYkxb4pQHkY; webvpn_username=25450936022%7C1784526203%7C6944cf948ee655b8c928e5de5598aa0531792d02; _astraeus_session=bW1uZFlzZ0FjM3pNOG9wMkFRVERIY3NHM3dtVVliTmJ6czkwd0NlMUk2ZFl4Z0lTODFDRDdaazJ2VlExQTlrQ2lKR2lVZ3pZY01UenZSdnUrMi9xeVVJSVNBOXlaNU9MbWFpbis5ckt6b0NkVHk3NDA4L3BpOThWb0lSSCtrUENIenFVWk4xUHY0NkwzRWdkUjQ3THN6MndHc2lMZHFoUXhlQit1Tm0yM0VxV0t1emZMUzl1WjBneFY4bXpUMGRtMHE2M3BjUHF2bmVOcjZkMzQ4NlN6elRjSm5qVEtOR0I5Y3laanFtbVAwWTd4akNBdnZSSERTOVZSZUdJMFRsY2VDS01TZG5ISGVlZXFmQ0wvQ0xJMkJzYUdCRHgrdHBwbVQ2RllUUFlkYXkrelpLRWJ0dFpsRzZiWUNOdTVSaW85R2xSQUpjNnFJRTNDYjRWTndxNG9nPT0tLXQ2WDZHYkxrdHRJMEtJaCs3QVJlZ3c9PQ%3D%3D--da0e6b93763f2b5360a347c04bc4cf08ad99c467'
+COOKIE_STRING = os.environ.get("WEBVPN_COOKIE", "")
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 Edg/127.0.0.0"
 

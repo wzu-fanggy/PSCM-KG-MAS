@@ -16,6 +16,13 @@
     python rebuild_graph_from_llm.py --apply --wipe   # 先清空旧图（危险，需备份）
 """
 import sys, os, json, argparse
+import os
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 from collections import Counter
 from neo4j import GraphDatabase
 
@@ -24,7 +31,7 @@ P = r"C:\Users\20155\dpa4_project\data\parsed"
 SRC = os.path.join(P, "papers_with_relations.normalized.json")
 if not os.path.exists(SRC):
     SRC = os.path.join(P, "papers_with_relations.json")
-URI, AUTH = "bolt://localhost:7687", ("neo4j", "wr20021218")
+URI, AUTH = "bolt://localhost:7687", ("neo4j", os.environ.get("NEO4J_PASSWORD", ""))
 
 # 类别词/泛化词黑名单：这些不是具体材料，绝不建成 Material 节点
 CATEGORY_BLACKLIST = set()

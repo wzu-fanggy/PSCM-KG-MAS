@@ -1,11 +1,18 @@
 import json
+import os
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 from pathlib import Path
 from neo4j import GraphDatabase
 
 # ========== 配置 ==========
 URI = "bolt://localhost:7687"
 USERNAME = "neo4j"
-PASSWORD = "wr20021218"
+PASSWORD = os.environ.get("NEO4J_PASSWORD", "")
 
 RESULTS_PATH = Path(r"C:\Users\20155\dpa4_project\data\multimodal_output\multimodal_results_v2.json")
 

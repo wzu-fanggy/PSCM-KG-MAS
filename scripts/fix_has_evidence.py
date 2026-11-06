@@ -3,12 +3,19 @@
 Fix HAS_EVIDENCE links: Evidence source_pdf has multiple formats
 """
 import sys
+import os
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 sys.stdout.reconfigure(encoding='utf-8')
 from neo4j import GraphDatabase
 
 URI = "bolt://localhost:7687"
 USERNAME = "neo4j"
-PASSWORD = "wr20021218"
+PASSWORD = os.environ.get("NEO4J_PASSWORD", "")
 
 TARGET_DOIS = [
     ("10.1126/science.aaa0472",     "MAPbI3"),
